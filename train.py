@@ -71,7 +71,7 @@ def get_unet():
     conv9 = conv3x3(32,up9)
     conv9 = conv3x3(32,conv9)
 
-    conv10= Conv2D(1,(1,1),activation='sigmod')(conv9)
+    conv10= Conv2D(1,(1,1),activation='sigmoid')(conv9)
     model = Model(inputs= [inputs],outputs=[conv10])
 
     model.compile(optimizer=Adam(lr=1e-5),loss=dice_coef,metrics=[dice_coef])
